@@ -15,7 +15,8 @@ console.log("Car details with empty inventory:", getCarDetails([], 33));
 console.log("Car details with invalid ID:", getCarDetails(inventory, 100));
 
 // Test Cases for getLastCar
-console.log("Get last car in the inventory:", getLastCar(inventory));
+console.log("Get last car in the inventory:");
+getLastCar(inventory);
 console.log("Get last car with empty inventory:", getLastCar([]));
 
 // Test Cases for getAllCarModelsSorted
@@ -45,10 +46,7 @@ if (typeof olderCars === "string") {
   console.log(`Number of cars older than 2000: ${olderCars.length}`);
 }
 console.log("Get old cars with missing years array:", getOldCars([], 2000));
-console.log(
-  "Get old cars with invalid year threshold:",
-  getOldCars(carYears, "year")
-);
+console.log("Get old cars with invalid years:", getOldCars(carYears, "year"));
 
 // Test Cases for getAllBMWAndAudiCars
 console.log("Get only BMW and Audi cars:", getAllBMWAndAudiCars(inventory));

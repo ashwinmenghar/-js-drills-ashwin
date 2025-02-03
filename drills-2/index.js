@@ -1,86 +1,81 @@
-const validation = (inventory) => Array.isArray(inventory);
+const validateInventory = (inventory) => Array.isArray(inventory);
 
 const getCarDetails = (inventory, id) => {
-  if (!validation(inventory) || typeof id !== "number") {
+  if (!validateInventory(inventory) || typeof id !== "number") {
     return "Invalid Data";
   }
+  const car = inventory.find((car) => car.id === id);
 
-  const data = inventory.find((car) => car.id === id);
-  return data == undefined
-    ? `No car found at ${id}`
-    : `Car ${id} is a ${data.car_year}, ${data.car_make}, and ${data.car_model}`;
+  return car
+    ? `Car ${id} is a ${car.car_year}, ${car.car_make}, and ${car.car_model}`
+    : `No car found at ${id}`;
 };
 
 const getLastCar = (inventory) => {
-  if (!validation(inventory)) {
+  if (!validateInventory(inventory)) {
     console.log("Invalid Data");
+    return;
   }
 
-  if (inventory.length == 0) {
+  if (inventory.length === 0) {
     console.log("Empty inventory");
     return;
   }
 
-  let car = inventory[inventory.length - 1];
-  console.log(`Last car is a ${car.car_make}, ${car.car_model}`);
+  const lastCar = inventory[inventory.length - 1];
+  console.log(`Last car is a ${lastCar.car_make}, ${lastCar.car_model}`);
 };
 
 const getAllCarModelsSorted = (inventory) => {
-  if (!validation(inventory)) {
+  if (!validateInventory(inventory)) {
     return "Invalid Data";
   }
 
-  if (inventory.length == 0) {
+  if (inventory.length === 0) {
     return "Empty inventory";
   }
 
-  const cars = inventory.slice().sort(function (a, b) {
-    return a.car_model.localeCompare(b.car_model);
-  });
-
-  return cars.map((car) => car.car_model);
+  return inventory
+    .map(({ car_model }) => car_model)
+    .sort((a, b) => a.localeCompare(b));
 };
 
 const getCarYears = (inventory) => {
-  if (!validation(inventory)) {
+  if (!validateInventory(inventory)) {
     return "Invalid Data";
   }
 
-  if (inventory.length == 0) {
+  if (inventory.length === 0) {
     return "Empty inventory";
   }
 
-  return inventory.map((car) => car.car_year);
+  return inventory.map(({ car_year }) => car_year);
 };
 
-// getCarYears();
-
 const getOldCars = (carYears, year) => {
-  if (!validation(carYears) || typeof year !== "number") {
+  if (!validateInventory(carYears) || typeof year !== "number") {
     return "Invalid Data";
   }
 
-  if (carYears.length == 0) {
+  if (carYears.length === 0) {
     return "Empty inventory";
   }
 
   return carYears.filter((carYear) => carYear < year);
 };
 
-// getOldCars();
-
 const getAllBMWAndAudiCars = (inventory) => {
-  if (!validation(inventory)) {
+  if (!validateInventory(inventory)) {
     return "Invalid Data";
   }
 
-  if (inventory.length == 0) {
+  if (inventory.length === 0) {
     return "Empty inventory";
   }
-  const bmwAndAudiCars = inventory.filter(
-    (cars) => cars.car_make == "Audi" || cars.car_make == "BMW"
+
+  return JSON.stringify(
+    inventory.filter((car) => car.car_make === "Audi" || car.car_make === "BMW")
   );
-  return JSON.stringify(bmwAndAudiCars);
 };
 
 export {
