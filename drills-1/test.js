@@ -10,17 +10,6 @@ import {
   getNamesAndEmailsByAge,
 } from "./index.js";
 
-const data = {
-  id: 1,
-  name: "Alice",
-  age: 30,
-  email: "alice@example.com",
-  city: "New York",
-  country: "USA",
-  hobbies: ["reading", "painting"],
-  isStudent: false,
-};
-
 // Test getEmails with args
 console.log("Emails:", getEmails());
 

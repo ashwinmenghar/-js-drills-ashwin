@@ -1,13 +1,22 @@
+/**
+ * Validation check
+ */
 const validation = (data) => Array.isArray(data);
 
+/**
+ * Get all emails
+ */
 const getEmails = (arrayOfObjects) => {
   if (!validation(arrayOfObjects)) {
     return "Invalid Data.";
   }
 
-  return arrayOfObjects.map((person) => person.email);
+  return arrayOfObjects.map((person) => person.email ?? "No Email");
 };
 
+/**
+ * Get hobbies by age
+ */
 const getHobbiesByAge = (arrayOfObjects, age) => {
   if (!validation(arrayOfObjects) || typeof age !== "number") {
     return "Invalid Data";
@@ -17,6 +26,9 @@ const getHobbiesByAge = (arrayOfObjects, age) => {
     .map((arr) => arr.hobbies);
 };
 
+/**
+ * Get students in Australia
+ */
 const getStudentsInAustralia = (arrayOfObjects) => {
   if (!validation(arrayOfObjects)) {
     return "Invalid Data";
@@ -27,6 +39,9 @@ const getStudentsInAustralia = (arrayOfObjects) => {
     .map((arr) => arr.name);
 };
 
+/**
+ * Get name and city at a given index
+ */
 const getNameAndCityAtIndex = (arrayOfObjects, index) => {
   if (!validation(arrayOfObjects) || typeof index !== "number") {
     return "Invalid Data";
@@ -43,6 +58,9 @@ const getNameAndCityAtIndex = (arrayOfObjects, index) => {
   return { Name: data.name, City: data.city };
 };
 
+/**
+ * Print age of each person
+ */
 const printAgeOfEachPerson = (arrayOfObjects) => {
   if (!validation(arrayOfObjects)) {
     console.log("Invalid Data");
@@ -51,6 +69,9 @@ const printAgeOfEachPerson = (arrayOfObjects) => {
   arrayOfObjects.forEach((arr) => console.log(arr.age));
 };
 
+/**
+ * Get first hobby of each persion
+ */
 const getFirstHobbyOfEachPerson = (arrayOfObjects) => {
   if (!validation(arrayOfObjects)) {
     return "Invalid Data";
@@ -58,6 +79,9 @@ const getFirstHobbyOfEachPerson = (arrayOfObjects) => {
   return arrayOfObjects.map((arr) => arr.hobbies[0]);
 };
 
+/**
+ * Get names and emails by there age
+ */
 const getNamesAndEmailsByAge = (arrayOfObjects, age) => {
   if (!validation(arrayOfObjects) || typeof age !== "number") {
     return "Invalid Data";
@@ -71,9 +95,7 @@ const getNamesAndEmailsByAge = (arrayOfObjects, age) => {
 };
 
 /**
- *
- * @param {*} arrayOfObjects
- * @returns Error | void
+ * Print all cities and countries
  */
 const printCityAndCountry = (arrayOfObjects) => {
   if (!validation(arrayOfObjects)) {
@@ -82,7 +104,7 @@ const printCityAndCountry = (arrayOfObjects) => {
   }
 
   arrayOfObjects.forEach((person) =>
-    console.log(`${person.city}, ${person.country}`)
+    console.log(`City: ${person.city}, Country: ${person.country}`)
   );
 };
 
