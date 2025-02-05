@@ -10,12 +10,12 @@ const items = [1, 2, 3, 4, 5, 5]; // use this array to test your code.
 
 */
 
-// each(items, (ele) => {
-//   console.log(ele);
+// each(items, (ele, i) => {
+//   console.log(ele, i);
 // });
 function each(elements, cb) {
   for (let i = 0; i < elements.length; i++) {
-    cb(elements[i]);
+    cb(elements[i], i);
   }
 
   // Iterates over a list of elements, yielding each in turn to the `cb` function.
