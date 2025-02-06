@@ -63,7 +63,7 @@ function add(a, b) {
 function cacheFunction(cb) {
   let cache = {};
   return function (...args) {
-    const key = JSON.stringify(...args);
+    const key = JSON.stringify(args);
     if (cache[key] != null) return cache[key];
 
     const newResult = cb(...args);
